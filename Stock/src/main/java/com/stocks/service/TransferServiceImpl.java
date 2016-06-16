@@ -1,6 +1,7 @@
 package com.stocks.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -57,7 +58,7 @@ public class TransferServiceImpl implements TransferService {
 				numberOfAllShares = numberOfAllShares.add(row.getQuantity());
 			}
 
-			return sumOfPrices.divide(numberOfAllShares);
+			return sumOfPrices.divide(numberOfAllShares, 10, RoundingMode.HALF_UP);
 		}
 
 		return BigDecimal.ZERO;

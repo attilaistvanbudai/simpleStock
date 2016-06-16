@@ -1,6 +1,7 @@
 package com.stocks.dao;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,7 +16,7 @@ public class TransferDaoImpl implements TransferDao {
 	private TimeUtils time;
 
 	public TransferDaoImpl(TimeUtils timeutil) {
-		transfers = new ArrayList<Transfer>();
+		transfers = Collections.synchronizedList(new ArrayList<Transfer>());
 		time = timeutil;
 	}
 
